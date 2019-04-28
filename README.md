@@ -29,45 +29,48 @@ dependencies {
 Below is the basic code,Please refer to the Demo for details.
 
 #### Creat Account
+
 ```
 Bip39WalletUtil walletUtils = new Bip39WalletUtil(context);
 WalletBean  walletBean = walletUtils.generateBip39Wallet(walletName,password,prompt);
 ```
 
 There are other ways of doing the same thing
+
 ```
 walletUtils.generateBip39Wallet(walletName);
 walletUtils.generateBip39Wallet(walletName, password);
-Import Account
-Import private key
-Credentials credentials = Credentials.create(privateKey);
-WalletFile walletFile= Wallet.createLight(password, credentials.getEcKeyPair());
+```
+#### Import Account
+##### Import private key
 
 ```
+Credentials credentials = Credentials.create(privateKey);
+WalletFile walletFile= Wallet.createLight(password, credentials.getEcKeyPair());
+```
 
-#### Import mnemonic
+##### Import mnemonic
 
 ```
 Credentials credentials = Bip39WalletUtil.loadBip39Credentials("", mnemonic);
 WalletFile walletFile= Wallet.createLight(password, credentials.getEcKeyPair());
 ```
 
-
-#### Import kstore file
+##### Import kstore file
 
 ```
 ObjectMapper objectMapper = ObjectMapperFactory.getObjectMapper();
 WalletFile walletFile = objectMapper.readValue(keystore, WalletFile.class);
 ```
 #### Sign transactions
-### Usual transactions
+##### Usual transactions
+
 ```
 String signData = TransferUtils.signTransaction(BigInteger nonce, BigInteger gasPrice, BigInteger gasLimit, String to,BigInteger value, String data, byte chainId, String privateKey)
 ```
-### Token transactions
+##### Token transactions
 
 ```
 String signData = TransferUtils. tokenTransaction(BigInteger nonce,BigInteger gasPrice,BigInteger gasLimit,String privateKey, String contractAddress, String toAddress, BigDecimal amount)
-
 ```
 
