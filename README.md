@@ -31,8 +31,11 @@ Below is the basic code,Please refer to the Demo for details.
 #### Creat Account
 ```
 Bip39WalletUtil walletUtils = new Bip39WalletUtil(context);
-WalletBean  walletBean = walletUtils.generateBip39Wallet(walletName,                                      password,prompt);
-•	There are other ways of doing the same thing
+WalletBean  walletBean = walletUtils.generateBip39Wallet(walletName,password,prompt);
+```
+
+There are other ways of doing the same thing
+```
 walletUtils.generateBip39Wallet(walletName);
 walletUtils.generateBip39Wallet(walletName, password);
 Import Account
@@ -55,8 +58,10 @@ WalletFile walletFile= Wallet.createLight(password, credentials.getEcKeyPair());
 ```
 ObjectMapper objectMapper = ObjectMapperFactory.getObjectMapper();
 WalletFile walletFile = objectMapper.readValue(keystore, WalletFile.class);
-•	Sign transactions
-Usual transactions
+```
+#### Sign transactions
+### Usual transactions
+```
 String signData = TransferUtils.signTransaction(BigInteger nonce, BigInteger gasPrice, BigInteger gasLimit, String to,BigInteger value, String data, byte chainId, String privateKey)
 ```
 ### Token transactions
