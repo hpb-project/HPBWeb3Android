@@ -13,7 +13,7 @@ android {
   ...
   repositories {
     flatDir {
-        dirs 'libs'   // aar目录
+        dirs 'libs'   // aar contents
     }
   }
 }
